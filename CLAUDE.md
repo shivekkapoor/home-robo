@@ -22,12 +22,18 @@ Genuine learning from experience (reinforcement learning) is out of scope. Say s
 
 - Parts being ordered per `docs/order-list.md` (prices and stock checked live 18 Sep 2026). Pi 5 4 GB out of stock at every listed seller; the owner is choosing between 8 GB now and waiting. Nothing assembled or flashed yet.
 - `robot/hw.py` names verified against Freenove's `Code/Server` (commit a49db4b, 12 Mar 2026). Still untested on hardware.
+- Docs for stage 0 (`docs/pi-setup.md`) and stage 1 (`docs/stage1-guide.md`) are written from Freenove's tutorial PDF and installer, 18 Sep 2026. Unverified on hardware; expect small fixes on first use.
+- The owner's next message will be "kit arrived, starting stage 0" with a photo of the unboxed parts. Respond by checking the photo against the order list, then walking `docs/pi-setup.md` one section at a time.
+
+## How the owner starts a session
+
+`cd ~/home-robo && claude`, so this file loads. Sessions have network access; use it for Freenove's repo and shop pages.
 
 ## First things a new session should do
 
 1. `git log` and `docs/plan.md` to see where things stand.
-2. If Freenove's repo has new commits since a49db4b, re-check `robot/hw.py` against `Code/Server` (motor.py, ultrasonic.py, infrared.py, servo.py). Run `python3 -m py_compile` on everything.
-3. Re-verify stock and price on every link in `docs/order-list.md`.
+2. If Freenove's repo has new commits since a49db4b, re-check `robot/hw.py` against `Code/Server` (motor.py, ultrasonic.py, infrared.py, servo.py) and the commands in `docs/pi-setup.md` against `Code/setup.py` and `Code/Server/test.py`. Run `python3 -m py_compile` on everything.
+3. If parts are still being ordered, re-verify stock and price on every link in `docs/order-list.md`.
 4. Keep `docs/pi-setup.md` current with the Raspberry Pi OS release the owner will flash.
 
 ## Working rules
@@ -41,4 +47,4 @@ Genuine learning from experience (reinforcement learning) is out of scope. Say s
 
 ## Repo map (home-robo)
 
-`README.md` overview. `docs/plan.md` stages and timeline. `docs/order-list.md` parts with Indian links. `docs/pi-setup.md` headless Pi setup. `robot/` code: `hw.py` hardware adapter, `stage1_line.py`, later `stage2_web.py`, `stage3_follow.py`, `stage4_voice.py`.
+`README.md` overview. `docs/plan.md` stages and timeline. `docs/order-list.md` parts with Indian links. `docs/pi-setup.md` stage 0: headless Pi setup, Freenove installer, assembly pointers, module tests, laptop-client pass test. `docs/stage1-guide.md` stage 1: track, sensor check, tuning, pass test. `robot/` code: `hw.py` hardware adapter, `stage1_line.py`, later `stage2_web.py`, `stage3_follow.py`, `stage4_voice.py`.
