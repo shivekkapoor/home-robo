@@ -16,7 +16,7 @@
 
 ## Budget
 
-About ₹18,000 to ₹23,000 for parts. Cloud speech and language services for stage 4 cost a few hundred rupees a month at hobby volume.
+About ₹30,500 for parts with a Pi 5 4 GB, or ₹37,000 with the 8 GB (live prices, 18 September 2026; see `docs/order-list.md`). Up from ₹18,000 to ₹23,000 in the first draft. Cloud speech and language services for stage 4 cost a few hundred rupees a month at hobby volume.
 
 ## Commercial note, parked
 

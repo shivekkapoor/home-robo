@@ -20,13 +20,13 @@ Genuine learning from experience (reinforcement learning) is out of scope. Say s
 
 ## Status
 
-- Parts being ordered per `docs/order-list.md`. Nothing assembled or flashed yet.
-- `robot/` holds stage 1 code written WITHOUT access to the kit or the Freenove library. First job of any session with network: read Freenove's GitHub repo for this kit, confirm the Pi 5 library's class and method names, and fix `robot/hw.py` to match.
+- Parts being ordered per `docs/order-list.md` (prices and stock checked live 18 Sep 2026). Pi 5 4 GB out of stock at every listed seller; the owner is choosing between 8 GB now and waiting. Nothing assembled or flashed yet.
+- `robot/hw.py` names verified against Freenove's `Code/Server` (commit a49db4b, 12 Mar 2026). Still untested on hardware.
 
 ## First things a new session should do
 
 1. `git log` and `docs/plan.md` to see where things stand.
-2. Verify `robot/hw.py` against https://github.com/Freenove/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi (the Pi 5 version of their `Code/Server` folder). Fix names. Run `python3 -m py_compile` on everything.
+2. If Freenove's repo has new commits since a49db4b, re-check `robot/hw.py` against `Code/Server` (motor.py, ultrasonic.py, infrared.py, servo.py). Run `python3 -m py_compile` on everything.
 3. Re-verify stock and price on every link in `docs/order-list.md`.
 4. Keep `docs/pi-setup.md` current with the Raspberry Pi OS release the owner will flash.
 

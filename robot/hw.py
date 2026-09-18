@@ -1,18 +1,20 @@
 """Hardware adapter for the Freenove 4WD kit on Raspberry Pi 5.
 
-UNVERIFIED: written before the kit or its library was available. Freenove has changed
-class and method names between kit versions. A session with network access must open
-Freenove's repo (Code/Server for the Pi 5 version) and fix the imports and method names
-below. Everything else in robot/ talks only to this file, so nothing else changes.
+Names VERIFIED against Freenove's repo, Code/Server, commit a49db4b (12 March 2026).
+Behaviour UNVERIFIED on real hardware: nothing has been run on the car yet.
+Everything else in robot/ talks only to this file.
 
-Expected Freenove modules (older naming shown; newer versions use lowercase files and
-a `Ordinary_Car` class with `set_motor_model`):
-  Motor.py       -> Motor().setMotorModel(fl, bl, fr, br)   speeds -4095..4095
-  Ultrasonic.py  -> Ultrasonic().get_distance()             cm
-  Infrared.py    -> Infrared().read_all_infrared()           3-bit value, or read_one_infrared(n)
-  servo.py       -> Servo().setServoPwm(channel, angle)
+Freenove modules used (one Code/Server folder now serves Pi 3, 4 and 5):
+  motor.py       -> Ordinary_Car().set_motor_model(fl, bl, fr, br)  -4095..4095, + is forward
+  ultrasonic.py  -> Ultrasonic().get_distance()                     cm, or None on a bad read
+  infrared.py    -> Infrared().read_all_infrared()                  3 bits: left, centre, right
+  servo.py       -> Servo().set_servo_pwm('0' or '1', angle)        '0' pan, '1' tilt
+
+Checked against Freenove's own line follower (car.py, mode_infrared): value 2 (centre only)
+drives straight, 4 (left only) turns left, 1 (right only) turns right, 7 stops. So 1 = sees
+the black line, and bit 2 is the left sensor.
 """
-import sys, os, time
+import sys, os
 
 FREENOVE_CODE = os.path.expanduser("~/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server")
 
@@ -23,26 +25,11 @@ class Robot:
         if dry_run:
             return
         sys.path.insert(0, FREENOVE_CODE)
-        try:
-            from Motor import Motor            # older naming
-            from Ultrasonic import Ultrasonic
-            from Infrared import Infrared
-            from servo import Servo
-            self.motor, self.sonar, self.line, self.servo = Motor(), Ultrasonic(), Infrared(), Servo()
-            self._drive = lambda fl, bl, fr, br: self.motor.setMotorModel(fl, bl, fr, br)
-            self._dist = self.sonar.get_distance
-            self._line = self.line.read_all_infrared
-            self._servo = self.servo.setServoPwm
-        except ImportError:
-            from motor import Ordinary_Car     # newer naming (verify)
-            from ultrasonic import Ultrasonic
-            from infrared import Infrared
-            from servo import Servo
-            self.motor, self.sonar, self.line, self.servo = Ordinary_Car(), Ultrasonic(), Infrared(), Servo()
-            self._drive = lambda fl, bl, fr, br: self.motor.set_motor_model(fl, bl, fr, br)
-            self._dist = self.sonar.get_distance
-            self._line = self.line.read_all_infrared
-            self._servo = self.servo.set_servo_pwm
+        from motor import Ordinary_Car
+        from ultrasonic import Ultrasonic
+        from infrared import Infrared
+        from servo import Servo
+        self.motor, self.sonar, self.line, self.servo = Ordinary_Car(), Ultrasonic(), Infrared(), Servo()
 
     # speed in -100..100 per side
     def drive(self, left, right):
@@ -50,25 +37,27 @@ class Robot:
         if self.dry:
             print(f"[drive] L={left:4d} R={right:4d}")
             return
-        self._drive(l, l, r, r)
+        self.motor.set_motor_model(l, l, r, r)
 
     def stop(self):
         self.drive(0, 0)
 
     def distance_cm(self):
+        """Distance to the nearest object. A failed read returns 0, so callers stop to be safe."""
         if self.dry:
             return 100.0
-        return float(self._dist())
+        d = self.sonar.get_distance()
+        return 0.0 if d is None else float(d)
 
     def line_bits(self):
         """Returns (left, centre, right) as 0/1, 1 = sees the black line."""
         if self.dry:
             return (0, 1, 0)
-        v = int(self._line())
+        v = int(self.line.read_all_infrared())
         return ((v >> 2) & 1, (v >> 1) & 1, v & 1)
 
     def head(self, pan_deg=90, tilt_deg=90):
         if self.dry:
             return
-        self._servo("0", pan_deg)
-        self._servo("1", tilt_deg)
+        self.servo.set_servo_pwm("0", pan_deg)
+        self.servo.set_servo_pwm("1", tilt_deg)
