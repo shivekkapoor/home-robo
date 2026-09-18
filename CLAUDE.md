@@ -6,7 +6,7 @@
 
 ## The robot
 
-Freenove 4WD Smart Car Kit for Raspberry Pi (FNK0043) on a Raspberry Pi 5, 4 GB. Five stages, each a weekend or two:
+Freenove 4WD Smart Car Kit for Raspberry Pi (FNK0043) on a Raspberry Pi 5, 8 GB. Five stages, each a weekend or two:
 
 | Stage | Does | Pass test |
 |---|---|---|
@@ -20,7 +20,7 @@ Genuine learning from experience (reinforcement learning) is out of scope. Say s
 
 ## Status
 
-- Parts being ordered per `docs/order-list.md` (prices and stock checked live 18 Sep 2026). Pi 5 4 GB out of stock at every listed seller; the owner is choosing between 8 GB now and waiting. Nothing assembled or flashed yet.
+- Parts ordered 18 Sep 2026, see the "What was actually ordered" table in `docs/order-list.md`. Pi 5 8 GB chosen because the 4 GB was out of stock everywhere. robu.in items arrive within a week; the Freenove kit from Amazon.in is due 5 Oct 2026 and gates assembly. Nothing assembled or flashed yet.
 - `robot/hw.py` names verified against Freenove's `Code/Server` (commit a49db4b, 12 Mar 2026). Still untested on hardware.
 - Docs for stage 0 (`docs/pi-setup.md`) and stage 1 (`docs/stage1-guide.md`) are written from Freenove's tutorial PDF and installer, 18 Sep 2026. Unverified on hardware; expect small fixes on first use.
 - The owner's next message will be "kit arrived, starting stage 0" with a photo of the unboxed parts. Respond by checking the photo against the order list, then walking `docs/pi-setup.md` one section at a time.
@@ -33,7 +33,7 @@ Genuine learning from experience (reinforcement learning) is out of scope. Say s
 
 1. `git log` and `docs/plan.md` to see where things stand.
 2. If Freenove's repo has new commits since a49db4b, re-check `robot/hw.py` against `Code/Server` (motor.py, ultrasonic.py, infrared.py, servo.py) and the commands in `docs/pi-setup.md` against `Code/setup.py` and `Code/Server/test.py`. Run `python3 -m py_compile` on everything.
-3. If parts are still being ordered, re-verify stock and price on every link in `docs/order-list.md`.
+3. Parts are ordered; no more price checks needed unless something is returned.
 4. Keep `docs/pi-setup.md` current with the Raspberry Pi OS release the owner will flash.
 
 ## Working rules

@@ -1,21 +1,30 @@
 # Robot: order list with Indian links
 
-**Checked live:** 18 September 2026, every link below. Prices include GST, before delivery. They move weekly.
+**Ordered:** 18 September 2026, see the table below. **Checked live:** 18 September 2026, every link below. Prices include GST, before delivery. They move weekly.
 **Path:** Freenove 4WD kit plus Raspberry Pi 5. Enough for all five stages.
 
-## Blocker: the Raspberry Pi 5 4 GB is out of stock
+## Decision, 18 September 2026: Pi 5 8 GB
 
-| Seller | Pi 5 4 GB | Other Pi 5 sizes |
+The 4 GB was out of stock at robu.in (₹13,409), robocraze (₹14,181) and Amazon.in with no restock date. The owner chose the 8 GB from robu.in at ₹19,999. Nothing else on the list changes; the extra memory helps stage 3.
+
+## What was actually ordered, 18 September 2026
+
+| Item | Where | ₹ |
 |---|---|---|
-| robu.in (official reseller) | ₹13,409, **out of stock** | 8 GB ₹19,999 in stock. 2 GB ₹7,629 and 1 GB ₹5,399 out of stock |
-| robocraze.com | ₹14,181, **out of stock** | 8 GB ₹19,999, out of stock |
-| Amazon.in B0CK3L9WD3 | **currently unavailable** | Only a 4 GB bundle with case at ₹26,176 |
+| Raspberry Pi 5, 8 GB | robu.in | 19,999 |
+| Official Pi 5 Active Cooler | robu.in | 519 |
+| Official 27 W USB-C supply, IN plug, white | robu.in | 1,255 |
+| Samsung INR18650-30Q cells, two | robu.in | 1,218 |
+| Official Pi 5 camera FPC cable, 200 mm, two (one is enough; second is a spare) | robu.in | 244 |
+| SanDisk Ultra 64 GB microSDXC, A1 (https://robu.in/product/sandisk-micro-sdxc-ush-i-64gb-class-10-memory-card/) | robu.in | 1,949 |
+| Freenove 4WD kit FNK0043, sold by Trendora Global, delivery 5 Oct | Amazon.in B07YD2LT9D | 11,021 |
+| TESTIN 2-slot 18650 charger | Amazon.in | 216 |
+| USB 2.0 Mini Microphone "Voice Recognition Portable Studio Speech Mic" (robu.in's ₹183 mic went out of stock) | Amazon.in, search "mini usb microphone raspberry pi" | 435 |
+| **Total** | | **≈ ₹36,900** |
 
-Three ways forward, pick one:
+Still needed: a way to write the card from the Mac. A 14 or 16 inch MacBook Pro (2021 on) has a full-size SD slot and needs only a microSD-to-SD adapter (₹50 to 100, any shop; the robu.in card ships without one). A MacBook Air or 13 inch Pro has no slot and needs a USB-C microSD reader (₹300 to 500 on Amazon.in).
 
-1. **Buy the Pi 5 8 GB from robu.in now, ₹19,999.** Costs ₹6,590 more. Nothing else on the list changes, and the spare memory helps with person detection in stage 3. Link: https://robu.in/product-category/raspberry-pi-5/
-2. **Wait for the 4 GB.** Click "Notify me" on https://robu.in/product/raspberry-pi-5-model-4gb/. There's no restock date, and prices have been rising with the memory shortage.
-3. **Use a Pi 4 4 GB, ₹11,469, in stock at robu.in** (https://robu.in/product/raspberry-pi-4-model-b-with-4-gb-ram/). Freenove's code supports it and ours runs unchanged. But the Pi 5 cooler, 27 W supply and camera cable below don't fit a Pi 4, so they'd need swapping. It's also about half as fast for stages 3 and 4. Not recommended.
+The kit is the gating item: seller-shipped, 5 October delivery. Everything else arrives within a week, so the Pi can be flashed and tested on the bench (stage 0 sections 1 to 3) before the car arrives.
 
 ## Checked links, two per item
 

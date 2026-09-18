@@ -1,6 +1,6 @@
 # home-robo plan
 
-**Kit:** Freenove 4WD Smart Car Kit for Raspberry Pi (FNK0043), Raspberry Pi 5 4 GB.
+**Kit:** Freenove 4WD Smart Car Kit for Raspberry Pi (FNK0043), Raspberry Pi 5 8 GB (4 GB was out of stock everywhere on 18 Sep 2026).
 **Started:** 18 September 2026.
 
 ## Stages
@@ -16,7 +16,7 @@
 
 ## Budget
 
-About ₹30,500 for parts with a Pi 5 4 GB, or ₹37,000 with the 8 GB (live prices, 18 September 2026; see `docs/order-list.md`). Up from ₹18,000 to ₹23,000 in the first draft. Cloud speech and language services for stage 4 cost a few hundred rupees a month at hobby volume.
+About ₹36,900 for parts as ordered on 18 September 2026 with the Pi 5 8 GB (see `docs/order-list.md`). Up from ₹18,000 to ₹23,000 in the first draft. Cloud speech and language services for stage 4 cost a few hundred rupees a month at hobby volume.
 
 ## Commercial note, parked
 
